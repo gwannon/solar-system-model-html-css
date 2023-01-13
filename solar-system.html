@@ -1,0 +1,336 @@
+<div id="solar-system">
+  <div id="sun" title="Sun"></div>
+  <div id="mercury" title="Mercury"></div>
+  <div id="venus" title="Venus"></div>
+  <div id="earth" title="Earth">
+    <div id="moon" title="Moon"></div>
+  </div>
+  <div id="mars" title="Mars"></div>
+  <div id="kupier"></div>
+  <div id="jupiter" title="Jupiter">
+    <div id="ganymede" title="Ganymede"></div>
+    <div id="io" title="Io"></div>
+    <div id="callisto" title="Callisto"></div>
+  </div>
+  <div id="saturn" title="Saturn"></div>
+  <div id="uranus" title="Uranus"></div>
+  <div id="neptune" title="Neptune"></div>
+  <div id="pluto" title="Pluto"></div>
+</div>
+<style>
+:root {
+  --duration: 10s;
+}
+body {
+  padding: 0;
+  margin: 0;
+}
+
+#solar-system {
+  width: 100vw;
+  height: 100vh;
+  background-color: #0c090a;
+  position: relative;
+}
+
+#sun {
+  --size: 5vh;
+  position: absolute;
+  width: calc(var(--size) - 2px);
+  height: calc(var(--size) - 2px);
+  border-radius: 50%;
+  filter: blur(1px);
+  top: calc(50vh - (var(--size) / 2));
+  left: calc(50vw - (var(--size) / 2));
+  background: radial-gradient(circle, #ff5722 0%, #ffc107 90%, #ff5722 100%);
+  z-index: 10;
+  border: 2px dashed #0c090a;
+}
+#solar-system > div:not(#sun),
+#solar-system > div > div {
+  --size: 1vh;
+  --degree: 0deg;
+  --top: 45vh;
+  --animation-duration: calc(var(--duration) * 0.24);
+  animation-name: rotation;
+  animation-duration: var(--animation-duration);
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  transform-origin: bottom center;
+  position: absolute;
+  top: var(--top);
+  left: 50vw;
+  width: 1px;
+  height: calc(50vh - var(--top));
+  background-color: #cecece;
+  z-index: 1;
+}
+#solar-system > div:not(#sun):before,
+#solar-system > div > div:before {
+  content: "";
+  display: block;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  filter: blur(1px);
+  background: #bfb3a4;
+  left: calc(50% - (var(--size) / 2));
+  top: calc(0% - (var(--size) / 2));
+  position: absolute;
+  z-index: 10;
+}
+#solar-system > div#venus {
+  --size: 2vh;
+  --animation-duration: calc(var(--duration) * 0.62);
+  --top: 40vh;
+}
+
+#solar-system > div#venus:before {
+  background: linear-gradient(
+    0,
+    #ffeb3b 0%,
+    #ffc107 30%,
+    #ff9800 60%,
+    #ffc107 80%,
+    #ffeb3b 100%
+  );
+}
+
+#solar-system > div#earth {
+  --size: 3vh;
+  --animation-duration: calc(var(--duration) * 1);
+  --top: 35vh;
+}
+
+#solar-system > div#earth:before {
+  background: linear-gradient(
+    0,
+    rgb(255 255 255) 0%,
+    #4188c1 20%,
+    #2196f3 80%,
+    rgb(255 255 255) 100%
+  );
+}
+
+#solar-system > div#earth > div#moon {
+  --size: 1vh;
+  --animation-duration: calc(var(--duration) * 0.08);
+  top: -3vh;
+  height: 3vh;
+  left: 0px;
+}
+
+#solar-system > div#earth > div#moon:before {
+  background: #f5f3ce;
+}
+
+#solar-system > div#mars {
+  --size: 3vh;
+  --animation-duration: calc(var(--duration) * 1.88);
+  --top: 28vh;
+}
+
+#solar-system > div#mars:before {
+  background: linear-gradient(
+    0,
+    rgb(255 0 0) 0%,
+    rgb(62 0 0) 30%,
+    rgb(158 0 34) 60%,
+    rgb(255 0 0) 80%,
+    rgb(144 0 0) 100%
+  );
+}
+
+#solar-system > div#jupiter {
+  --size: 5vh;
+  --animation-duration: calc(var(--duration) * 12);
+  --top: 15vh;
+}
+
+#solar-system > div#jupiter:before {
+  background: linear-gradient(
+    0,
+    rgb(220 125 93) 0%,
+    rgb(78 26 6) 30%,
+    rgb(183 93 37) 60%,
+    rgb(61 27 4) 70%,
+    rgb(232 64 17) 100%
+  );
+}
+
+#solar-system > div#jupiter:after {
+  content: "";
+  display: block;
+  height: 1vh;
+  width: 2vh;
+  border: 0.3vh solid #3f1c00;
+  z-index: 200;
+  position: absolute;
+  top: -1.5vh;
+  left: -1vh;
+  border-radius: 50%;
+  filter: blur(1px);
+  background-color: #984300;
+}
+
+#solar-system > div#jupiter > div#ganymede {
+  --size: 1.1vh;
+  --animation-duration: calc(var(--duration) * 0.48);
+  top: -4vh;
+  height: 4vh;
+  left: 0px;
+}
+
+#solar-system > div#jupiter > div#ganymede:before {
+  background: #2b2b21;
+}
+
+#solar-system > div#jupiter > div#io {
+  --size: 1vh;
+  --animation-duration: calc(var(--duration) * 0.08);
+  --degree: 120deg;
+  top: -3.5vh;
+  height: 3.5vh;
+  left: 0px;
+}
+
+#solar-system > div#jupiter > div#io:before {
+  background: #988445;
+}
+
+#solar-system > div#jupiter > div#callisto {
+  --size: 1vh;
+  --animation-duration: calc(var(--duration) * 0.08);
+  --degree: 240deg;
+  top: -3.5vh;
+  height: 3.5vh;
+  left: 0px;
+}
+
+#solar-system > div#jupiter > div#callisto:before {
+  background: #58473d;
+}
+#solar-system > div#saturn {
+  --size: 3vh;
+  --animation-duration: calc(var(--duration) * 29);
+  --top: 10vh;
+}
+
+#solar-system > div#saturn:before {
+  background: linear-gradient(
+    0,
+    #c617dd 0%,
+    #e91e63 30%,
+    #9c27b0 60%,
+    #e91e63 70%,
+    #9c27b0 100%
+  );
+}
+
+#solar-system > div#saturn:after {
+  content: " ";
+  border: 0.4vh solid #03a9f4;
+  border-top: 0.4vh solid transparent;
+  width: 4vh;
+  height: 1vh;
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+  top: -1vh;
+  left: -2.4vh;
+  z-index: 100;
+}
+
+#solar-system > div#uranus {
+  --size: 2vh;
+  --animation-duration: calc(var(--duration) * 84);
+  --top: 5vh;
+}
+
+#solar-system > div#uranus:before {
+  background: linear-gradient(
+    0,
+    #009688 0%,
+    #4caf50 30%,
+    rgb(18 93 21) 60%,
+    #009688 80%,
+    #4caf50 100%
+  );
+}
+
+#solar-system > div#neptune {
+  --size: 1.5vh;
+  --animation-duration: calc(var(--duration) * 165);
+  --top: 2vh;
+}
+
+#solar-system > div#neptune:before {
+  background: linear-gradient(
+    0,
+    #00bcd4 0%,
+    #03a9f4 30%,
+    #2196f3 60%,
+    #03a9f4 80%,
+    #00bcd4 100%
+  );
+}
+
+#solar-system > div#pluto {
+  --size: 0.5vh;
+  --animation-duration: calc(var(--duration) * 248);
+  --top: 0.5vh;
+}
+
+#solar-system > div#pluto:before {
+  background: linear-gradient(
+    0,
+    rgb(255 0 0) 0%,
+    rgb(62 0 0) 30%,
+    rgb(158 0 34) 60%,
+    rgb(255 0 0) 80%,
+    rgb(144 0 0) 100%
+  );
+}
+
+#solar-system:before {
+  --size: 60vh;
+  content: " ";
+  display: block;
+  width: var(--size);
+  height: var(--size);
+  top: calc(50vh - (var(--size) / 2));
+  left: calc(50vw - (var(--size) / 2));
+  background-image: linear-gradient(45deg, #ababab96 25%, #000000ad 25%),
+    linear-gradient(-45deg, #2196f324 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #00bcd400 75%),
+    linear-gradient(-45deg, transparent 75%, #607d8b00 75%);
+  background-size: 12px 9px;
+  /* background-position: 0 0, -1px 0, 1px -27px, 0px 1px; */
+  border-radius: 50%;
+  position: absolute;
+  filter: blur(2px);
+}
+
+#solar-system:after {
+  --size: 50vh;
+  content: " ";
+  display: block;
+  width: var(--size);
+  height: var(--size);
+  top: calc(50vh - (var(--size) / 2));
+  left: calc(50vw - (var(--size) / 2));
+  background-color: #0c090a;
+  border-radius: 50%;
+  position: absolute;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(var(--degree));
+  }
+  100% {
+    transform: rotate(calc(360deg + var(--degree)));
+  }
+}
+
+</style>
